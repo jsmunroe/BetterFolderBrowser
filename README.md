@@ -1,4 +1,4 @@
-# BetterFolderBrowser
+# BetterFolderBrowser.Core
 [![bfb-nuget](https://img.shields.io/nuget/dt/BetterFolderBrowser.Core?label=Downloads)](https://www.nuget.org/packages/BetterFolderBrowser.Core/)
 
 **BetterFolderBrowser.Core** is a .NET Core 3.1 component library that was written to help developers provide a better folder-browsing and selection experience to users by employing a similar browser dialog as the standard [OpenFileDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-3.1) in place of the current [FolderBrowserDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog?view=windowsdesktop-3.1) which only allows for single-folder selections with its tree-view display format. This allows for a much easier _viewing_, _modification_, _searching_ and _selection_ experience using the standard Windows Explorer dialog.
@@ -23,17 +23,6 @@ To install via the [NuGet Package Manager](https://www.nuget.org/packages/Better
 - Allows passing of literal paths as strings to the `RootFolder` property.
 - Allows folder multi-selection in contrast to the standard WinForms [FolderBrowserDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog?view=windowsdesktop-3.1) which only allows for single-folder selections. One can then access the list of selected folders using the property `SelectedPaths` or its variant `SelectedFolers` property.
 - The dialog can be displayed either blocking the UI thread or not using the `ShowDialog(IWin32Window)` or `ShowDialog()` methods respectively.
-- Provides additional custom [UITypeEditor](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.design.uitypeeditor?view=netframework-4.7.2) variants for folder-selection within the *Properties* window. They include the `SelectedPathEditor` (for **single** folder selection) and `SelectedPathsEditor` (for **multiple** folder selection) for use in-place of the standard WinForms [SelectedPathEditor](http://www.dotnetframework.org/default.aspx/DotNET/DotNET/8@0/untmp/whidbey/REDBITS/ndp/fx/src/Designer/WinForms/System/WinForms/Design/SelectedPathEditor@cs/1/SelectedPathEditor@cs). For usage of these editors, ensure you import the namespace `WK.Libraries.BetterFolderBrowserNS.Editors`.
-> Here are two examples of properties implementing the given custom editors:
-> ```c#
->     // Allows selection of one folder.
->     [Editor(typeof(SelectedPathEditor), typeof(UITypeEditor))]
->     public string MyFolderPath { get; set; }
->     
->     // Allows selection of many folders.
->     [Editor(typeof(SelectedPathsEditor), typeof(UITypeEditor))]
->     public string[] MyFolderPaths { get; set; }
-> ```
 
 # Usage
 If you prefer working with the Designer, simply add the component to Visual Studio's Toolbox and use the

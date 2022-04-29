@@ -1,7 +1,9 @@
 # BetterFolderBrowser
-[![bfb-nuget](https://img.shields.io/nuget/dt/BetterFolderBrowser?label=Downloads)](https://www.nuget.org/packages/BetterFolderBrowser/)  [![wk-donate](https://img.shields.io/badge/BuyMeACoffee-Donate-orange.svg)](https://www.buymeacoffee.com/willykimura)
+[![bfb-nuget](https://img.shields.io/nuget/dt/BetterFolderBrowser.Core?label=Downloads)](https://www.nuget.org/packages/BetterFolderBrowser.Core/)
 
-**BetterFolderBrowser** is a .NET component library that was written to help developers provide a better folder-browsing and selection experience to users by employing a similar browser dialog as the standard [OpenFileDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=netframework-4.7.2) in place of the current [FolderBrowserDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog?view=netframework-4.7.2) which only allows for single-folder selections with its tree-view display format. This allows for a much easier _viewing_, _modification_, _searching_ and _selection_ experience using the standard Windows Explorer dialog.
+**BetterFolderBrowser.Core** is a .NET Core 3.1 component library that was written to help developers provide a better folder-browsing and selection experience to users by employing a similar browser dialog as the standard [OpenFileDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-3.1) in place of the current [FolderBrowserDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog?view=windowsdesktop-3.1) which only allows for single-folder selections with its tree-view display format. This allows for a much easier _viewing_, _modification_, _searching_ and _selection_ experience using the standard Windows Explorer dialog.
+
+This is a fork of the [BetterFolderBrowser](https://github.com/Willy-Kimura/BetterFolderBrowser) by [Willy-Kimura](https://github.com/Willy-Kimura). I remade the projects and solution in .NET Core 3.1, but almost all of this work is theirs. Even this ReadMe is borrowed from that repo. Visit and donate there.
 
 Here's a preview of the library in action:
 
@@ -10,16 +12,16 @@ Here's a preview of the library in action:
 
 # Installation
 
-To install via the [NuGet Package Manager](https://www.nuget.org/packages/BetterFolderBrowser/1.0.0) Console, type:
+To install via the [NuGet Package Manager](https://www.nuget.org/packages/BetterFolderBrowser.Core/1.0.0) Console, type:
 
-> `Install-Package BetterFolderBrowser`
+> `Install-Package BetterFolderBrowser.Core`
 
 # Features
-- Works with [.NET 2.0](https://www.microsoft.com/en-us/download/details.aspx?id=1639) and above allowing for usability across most .NET applications.
+- Works with [.NET Core 3.1](https://dotnet.microsoft.com/en-us/download/dotnet/3.1) and above allowing for usability across most .NET Core applications.
 - Built as a component making it accessible in Design Mode.
-- Uses the same dialog model as the [OpenFileDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=netframework-4.7.2), making it super easy for users to *view*, *search*, *select*, and *modify* folders when opened.
+- Uses the same dialog model as the [OpenFileDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-3.1), making it super easy for users to *view*, *search*, *select*, and *modify* folders when opened.
 - Allows passing of literal paths as strings to the `RootFolder` property.
-- Allows folder multi-selection in contrast to the standard WinForms [FolderBrowserDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog?view=netframework-4.7.2) which only allows for single-folder selections. One can then access the list of selected folders using the property `SelectedPaths` or its variant `SelectedFolders` property.
+- Allows folder multi-selection in contrast to the standard WinForms [FolderBrowserDialog](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog?view=windowsdesktop-3.1) which only allows for single-folder selections. One can then access the list of selected folders using the property `SelectedPaths` or its variant `SelectedFolers` property.
 - The dialog can be displayed either blocking the UI thread or not using the `ShowDialog(IWin32Window)` or `ShowDialog()` methods respectively.
 - Provides additional custom [UITypeEditor](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.design.uitypeeditor?view=netframework-4.7.2) variants for folder-selection within the *Properties* window. They include the `SelectedPathEditor` (for **single** folder selection) and `SelectedPathsEditor` (for **multiple** folder selection) for use in-place of the standard WinForms [SelectedPathEditor](http://www.dotnetframework.org/default.aspx/DotNET/DotNET/8@0/untmp/whidbey/REDBITS/ndp/fx/src/Designer/WinForms/System/WinForms/Design/SelectedPathEditor@cs/1/SelectedPathEditor@cs). For usage of these editors, ensure you import the namespace `WK.Libraries.BetterFolderBrowserNS.Editors`.
 > Here are two examples of properties implementing the given custom editors:
@@ -75,4 +77,5 @@ If you're calling the dialog from within a custom [UserControl](https://docs.mic
     }
 ```
 
-*Made with* 💛 *by* [*Willy Kimura*]([https://github.com/Willy-Kimura)
+*Made with* 💛 *by* [*Willy Kimura*]([https://github.com/Willy-Kimura).
+*Upgraded with* 💕 *by* [*jsmunroe*](https://github.com/jsmunroe).

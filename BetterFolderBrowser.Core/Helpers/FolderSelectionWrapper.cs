@@ -122,7 +122,7 @@ namespace WK.Libraries.BetterFolderBrowserNS.Helpers
                 r.Call(ofd, "OnBeforeVistaDialog", dialog);
 
                 uint options = Convert.ToUInt32(r.CallAs(typeof(System.Windows.Forms.FileDialog), ofd, "GetOptions"));
-                options |= Convert.ToUInt32(r.GetEnum("FileDialogNative.FOS", "FOS_PICKFOLDERS"));
+                options |= 0x20u; // FileDialogNative.FOS.FOS_PICKFOLDERS
                 r.CallAs(typeIFileDialog, dialog, "SetOptions", options);
 
                 object pfde = r.New("FileDialog.VistaDialogEvents", ofd);

@@ -80,7 +80,8 @@ namespace WK.Libraries.BetterFolderBrowserNS.Helpers
 
             for (int i = 1; i < names.Length; i++)
             {
-                type = type.GetNestedType(names[i], BindingFlags.NonPublic);
+                type = type.GetNestedType(names[i], BindingFlags.NonPublic)
+                    ?? type.GetNestedType(names[i]);
             }
 
             return type;
@@ -156,8 +157,19 @@ namespace WK.Libraries.BetterFolderBrowserNS.Helpers
         /// <returns>The result of the function invocation.</returns>
         public object CallAs2(Type type, object obj, string func, object[] parameters)
         {
-            MethodInfo methInfo = type.GetMethod(func, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            return methInfo.Invoke(obj, parameters);
+            var typeName = type.FullName;
+
+            while (type != null)
+            {
+                MethodInfo methInfo = type.GetMethod(func, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+                if (methInfo != null)
+                    return methInfo.Invoke(obj, parameters);
+
+                type = type.BaseType;
+            }
+
+            throw new Exception($"{func} method could not be found on {typeName} or any of its base classes.");
         }
 
         /// <summary>
